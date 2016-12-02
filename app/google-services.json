@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1014197110558",
+    "firebase_url": "https://mybooks-1b8d2.firebaseio.com",
+    "project_id": "mybooks-1b8d2",
+    "storage_bucket": "mybooks-1b8d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014197110558:android:8311f3d64a44edd7",
+        "android_client_info": {
+          "package_name": "fr.schollaert.mybooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014197110558-f5qhm6oua6hd7uorj6va4n76qelssf27.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.schollaert.mybooks",
+            "certificate_hash": "AA8B80646DFE0531A683A3BBC96B31472EDF600E"
+          }
+        },
+        {
+          "client_id": "1014197110558-8lm8ami3ld6iieee2v0lnglo2fhdotr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1uwZP6O90uFgh0mC3zOKN7xwRW1RLqzU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014197110558-8lm8ami3ld6iieee2v0lnglo2fhdotr2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
