@@ -129,7 +129,9 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Toast.makeText(EmailPasswordActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
-
+                        else{
+                            setContentView(R.layout.activity_me);
+                        }
                         // [START_EXCLUDE]
                         hideProgressDialog();
                         // [END_EXCLUDE]
@@ -165,6 +167,9 @@ public class EmailPasswordActivity extends BaseActivity implements
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
+                        }
+                        else{
+                            setContentView(R.layout.activity_me);
                         }
                         hideProgressDialog();
                         // [END_EXCLUDE]
