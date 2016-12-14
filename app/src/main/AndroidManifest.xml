@@ -18,9 +18,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CustomAuthActivity"
-            android:label="@string/label_custom_auth" />
-        <activity
             android:name=".GoogleSignInActivity"
             android:label="@string/label_google_sign_in" />
         <activity
