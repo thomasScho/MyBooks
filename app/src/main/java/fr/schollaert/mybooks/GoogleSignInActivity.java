@@ -65,16 +65,10 @@ public class GoogleSignInActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google);
-
+      setContentView(R.layout.activity_google);
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
-
-        // Button listeners
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.disconnect_button).setOnClickListener(this);
+     mDetailTextView = (TextView) findViewById(R.id.detail);
 
         // [START config_signin]
         // Configure Google Sign In
@@ -83,12 +77,10 @@ public class GoogleSignInActivity extends BaseActivity implements
                 .requestEmail()
                 .build();
         // [END config_signin]
-
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
@@ -111,6 +103,7 @@ public class GoogleSignInActivity extends BaseActivity implements
             }
         };
         // [END auth_state_listener]
+       signIn();
     }
 
     // [START on_start_add_listener]
