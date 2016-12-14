@@ -25,9 +25,6 @@
             android:label="@string/label_emailpassword"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".AnonymousAuthActivity"
-            android:label="@string/label_anonymous_auth" />
-        <activity
             android:name=".Me"
             android:label="@string/title_activity_me"
             android:theme="@style/AppTheme.NoActionBar"></activity>
