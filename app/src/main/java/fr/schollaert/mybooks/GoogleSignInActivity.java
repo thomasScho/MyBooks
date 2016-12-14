@@ -1,12 +1,12 @@
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -65,10 +65,8 @@ public class GoogleSignInActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_google);
-        // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-     mDetailTextView = (TextView) findViewById(R.id.detail);
+
+        setContentView(R.layout.activity_chooser);
 
         // [START config_signin]
         // Configure Google Sign In
@@ -98,12 +96,12 @@ public class GoogleSignInActivity extends BaseActivity implements
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
                 // [START_EXCLUDE]
-                updateUI(user);
+                //  updateUI(user);
                 // [END_EXCLUDE]
             }
         };
         // [END auth_state_listener]
-       signIn();
+        signIn();
     }
 
     // [START on_start_add_listener]
@@ -139,7 +137,7 @@ public class GoogleSignInActivity extends BaseActivity implements
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
-                updateUI(null);
+                //     updateUI(null);
                 // [END_EXCLUDE]
             }
         }
@@ -180,6 +178,7 @@ public class GoogleSignInActivity extends BaseActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        setContentView(R.layout.activity_me);
     }
     // [END signin]
 
@@ -192,7 +191,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
-                        updateUI(null);
+                        //  updateUI(null);
                     }
                 });
     }
@@ -206,7 +205,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
-                        updateUI(null);
+                        // updateUI(null);
                     }
                 });
     }
