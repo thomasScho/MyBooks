@@ -19,7 +19,9 @@ package fr.schollaert.mybooks;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Simple list-based Activity to redirect to one of the other Activities. This Activity does not
@@ -43,6 +48,14 @@ public class ChooserActivity extends AppCompatActivity implements  View.OnClickL
             R.string.desc_firebase_ui,
             R.string.desc_custom_auth,
     };
+
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+
+    // [START declare_auth_listener]
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    // [END declare_auth_listener]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
