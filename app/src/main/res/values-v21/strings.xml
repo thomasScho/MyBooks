@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="giveEmail">Adresse Mail</string>
-    <string name="Mdp">Mot de passe</string>
     <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
 </resources>

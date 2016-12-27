@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyBooks</string>
+    <string name="Mdp">Mot de passe</string>
+    <string name="auth_failed">L\'authentification a échoué</string>
+    <string name="create_account">S\'inscrire</string>
+    <string name="desc_google_sign_in">Utilisez votre compte Google pour vous authentifier</string>
+    <string name="desc_twitter_login"></string>
+    <string name="disconnect">Se déconnecter</string>
+    <string name="email_fmt">Email</string>
+    <string name="emailpassword_status_fmt">"Email "</string>
+    <string name="emailpassword_title_text">Email et mot de passe</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_email">Email</string>
+    <string name="giveEmail"></string>
+    <string name="label_emailpassword">Authentification par email et mot de passe</string>
+    <string name="loading">Chargement...</string>
+    <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
+    <string name="sign_in">Se connecter</string>
+    <string name="sign_out">Se déconnecter</string>
+    <string name="signed_out">Déconnecté</string>
+    <string name="title_activity_me">Mon profil</string>
+    <string name="google_title_text">Connexion par Google</string>
+</resources>

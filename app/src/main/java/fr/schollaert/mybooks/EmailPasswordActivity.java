@@ -16,6 +16,7 @@
 
 package fr.schollaert.mybooks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -55,8 +56,8 @@ public class EmailPasswordActivity extends BaseActivity implements
         setContentView(R.layout.activity_emailpassword);
 
         // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
+    //    mStatusTextView = (TextView) findViewById(R.id.status);
+     //   mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField = (EditText) findViewById(R.id.field_email);
         mPasswordField = (EditText) findViewById(R.id.field_password);
 
@@ -64,6 +65,7 @@ public class EmailPasswordActivity extends BaseActivity implements
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -208,15 +210,15 @@ public class EmailPasswordActivity extends BaseActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+      //      mStatusTextView.setText(getString(R.string.emailpassword_status_fmt, user.getEmail()));
+         //   mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
         } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
+          //  mStatusTextView.setText(R.string.signed_out);
+           // mDetailTextView.setText(null);
 
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
@@ -233,6 +235,8 @@ public class EmailPasswordActivity extends BaseActivity implements
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.sign_out_button) {
             signOut();
+        } else  if (i == R.id.sign_in_button) {
+            startActivity(new Intent(this, GoogleSignInActivity.class));
         }
     }
 }
