@@ -171,7 +171,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                             mStatusTextView.setText(R.string.auth_failed);
                         }
                         else{
-                            setContentView(R.layout.activity_me);
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                         }
                         hideProgressDialog();
                         // [END_EXCLUDE]

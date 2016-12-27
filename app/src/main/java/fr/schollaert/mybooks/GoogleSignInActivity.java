@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -142,7 +143,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
-                        setContentView(R.layout.activity_menu);
+                        startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                     }
                 });
     }
