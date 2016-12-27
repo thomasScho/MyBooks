@@ -13,16 +13,18 @@
         <activity android:name=".EmailPasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".GoogleSignInActivity" />
         <activity
-            android:name=".GoogleSignInActivity"
-            android:label="@string/label_google_sign_in" />
-        <activity
-            android:name=".Me"
-            android:label="@string/title_activity_me"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".MeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".MyBooksActivity" />
+        <activity android:name=".FindBooksActivity" />
+        <activity android:name=".MyCommentsActivity"></activity>
     </application>
 
 </manifest>

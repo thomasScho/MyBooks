@@ -132,7 +132,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            setContentView(R.layout.activity_me);
+                            setContentView(R.layout.activity_menu);
                         }
                         // [START_EXCLUDE]
                         hideProgressDialog();

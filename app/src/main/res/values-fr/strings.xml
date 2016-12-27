@@ -21,4 +21,8 @@
     <string name="signed_out">Déconnecté</string>
     <string name="title_activity_me">Mon profil</string>
     <string name="google_title_text">Connexion par Google</string>
+    <string name="monProfil">Mon profil</string>
+    <string name="Meslivres">Mes livres</string>
+    <string name="RechercherLivre">Rechercher un livre</string>
+    <string name="mesDiscussions">Mes discussions</string>
 </resources>

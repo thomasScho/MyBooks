@@ -3,4 +3,8 @@
     <string name="giveEmail">Adresse Mail</string>
     <string name="Mdp">Mot de passe</string>
     <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
+    <string name="monProfil">Mon profil</string>
+    <string name="Meslivres">Mes livres</string>
+    <string name="RechercherLivre">Rechercher un livre</string>
+    <string name="mesDiscussions">Mes discussions</string>
 </resources>

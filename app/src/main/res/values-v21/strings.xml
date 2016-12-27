@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
+    <string name="monProfil">Mon profil</string>
+    <string name="Meslivres">Mes livres</string>
+    <string name="RechercherLivre">Rechercher un livre</string>
+    <string name="mesDiscussions">Mes discussions</string>
 </resources>

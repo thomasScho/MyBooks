@@ -59,4 +59,8 @@
     <string name="email_fmt">Email: %s</string>
     <string name="title_activity_me">Me</string>
     <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
+    <string name="monProfil">Mon profil</string>
+    <string name="Meslivres">Mes livres</string>
+    <string name="RechercherLivre">Rechercher un livre</string>
+    <string name="mesDiscussions">Mes discussions</string>
 </resources>

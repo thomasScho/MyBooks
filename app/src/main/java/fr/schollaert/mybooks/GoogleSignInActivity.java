@@ -142,7 +142,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
-                        setContentView(R.layout.activity_me);
+                        setContentView(R.layout.activity_menu);
                     }
                 });
     }
