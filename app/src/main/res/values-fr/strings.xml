@@ -25,4 +25,6 @@
     <string name="Meslivres">Mes livres</string>
     <string name="RechercherLivre">Rechercher un livre</string>
     <string name="mesDiscussions">Mes discussions</string>
+    <string name="texteAchercher">Titre du livre</string>
+    <string name="Rechercher">Rechercher</string>
 </resources>
