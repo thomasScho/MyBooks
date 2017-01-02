@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import fr.schollaert.mybooks.lazylist.ImageLoader;
@@ -50,9 +52,9 @@ public class LibraryAdapter extends BaseAdapter {
         tvAuthor.setText(book.getAuthor());
 
         ImageView ivCover = (ImageView) view.findViewById(R.id.ivCover);
-        ImageLoader imageLoader=new ImageLoader(context);
-        imageLoader.DisplayImage(book.getImageUrl(), ivCover);
-
+       // ImageLoader imageLoader=new ImageLoader(context);
+        //imageLoader.DisplayImage(book.getImageUrl(), ivCover);
+        Glide.with(context).load(book.getImageUrl()).into(ivCover);
         return view;
     }
 }
