@@ -38,7 +38,6 @@ public class FindBooksActivity extends AppCompatActivity  implements  View.OnCli
     @Override
     public void onClick(View v) {
         int click = v.getId();
-        final Context context = this.getApplicationContext();
         if (click == R.id.envoyerRecherche) {
             String titleToFind = ((EditText) findViewById(R.id.findingText)).getText().toString();
             if (titleToFind.length() > 0) {
@@ -81,8 +80,9 @@ public class FindBooksActivity extends AppCompatActivity  implements  View.OnCli
                             e.printStackTrace();
                         }
 
-                        System.out.println(bookList+ " TOTO ");
-                        ArrayAdapter<Book>  library = new  ArrayAdapter<Book> (context,android.R.layout.simple_list_item_1, bookList);
+                        System.out.println(bookList.get(0).getImageUrl()+ " TOTO ");
+                        System.out.println(bookList.get(3).getImageUrl()+ " TOTO ");
+                        LibraryAdapter  library = new  LibraryAdapter (getApplicationContext(), bookList);
                         ListView lv = (ListView) findViewById(R.id.listBookView);
                         lv.setAdapter(library);
                     }
