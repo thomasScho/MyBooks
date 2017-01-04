@@ -39,7 +39,7 @@ public class BookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
-        System.out.println("TEST TOTO ");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -61,7 +61,7 @@ public class BookActivity extends AppCompatActivity {
         });
 
         Book m_bookSelected = (Book) getIntent().getSerializableExtra("item");
-        System.out.println("TEST TOTO " + m_bookSelected);
+       
 
     }
 

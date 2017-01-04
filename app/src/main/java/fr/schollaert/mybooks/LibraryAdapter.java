@@ -35,7 +35,7 @@ public class LibraryAdapter extends BaseAdapter {
         return booksList.get(position);
     }
 
-    public Book getBookAtPosition(int position){
+    public Book getBookAtPosition(int position) {
         return booksList.get(position);
     }
 
@@ -57,19 +57,17 @@ public class LibraryAdapter extends BaseAdapter {
         tvAuthor.setText(book.getAuthor());
 
         ImageView ivCover = (ImageView) view.findViewById(R.id.ivCover);
-       // ImageLoader imageLoader=new ImageLoader(context);
-        //imageLoader.DisplayImage(book.getImageUrl(), ivCover);
         Glide.with(context).load(book.getImageUrl()).into(ivCover);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, BookActivity.class);
-                System.out.println("Avant l intent " + book);
-                intent.putExtra("item",  book);
-             v.getContext().startActivity(intent);
+                intent.putExtra("item", book);
+                v.getContext().startActivity(intent);
             }
         });
+
         return view;
     }
 }
