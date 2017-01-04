@@ -24,8 +24,12 @@ import org.json.JSONObject;
 import org.json.*;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class FindBooksActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -66,20 +70,46 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
                                 Book book = new Book();
                                 JSONObject item = array.getJSONObject(i);
 
-                                String googleID = item.getString("id");
+                                String googleID = item.optString("id");
                                 book.setGoogleID(googleID);
 
                                 JSONObject volumeInfo = item.getJSONObject("volumeInfo");
-                                String title = volumeInfo.getString("title");
+                                String title = volumeInfo.optString("title");
                                 book.setTitle(title);
 
-                                JSONArray authors = volumeInfo.getJSONArray("authors");
-                                String author = authors.getString(0);
-                                book.setAuthor(author);
+                                String subTitle = volumeInfo.optString("subtitle");
+                                book.setSubTitle(subTitle);
 
-                                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-                                String imageLink = imageLinks.getString("smallThumbnail");
-                                book.setImageUrl(imageLink);
+
+                                /**String publishedDate = volumeInfo.optString("publishedDate");
+                                if(publishedDate != null) {
+                                    book.setPublishedDate(new SimpleDateFormat(publishedDate));
+                                }
+*/
+                                JSONArray authors = volumeInfo.optJSONArray("authors");
+                                if(authors.length() > 0){
+                                    String author = authors.optString(0);
+                                    book.setAuthor(author);
+
+                                }
+
+                                JSONArray industryIdentifiers = volumeInfo.optJSONArray("industryIdentifiers");
+                                if(industryIdentifiers.length() > 0){
+                                    String isbn10 = industryIdentifiers.getJSONObject(0).optString("identifier");
+                                    book.setIsbn10(isbn10);
+                                }
+                                else if(industryIdentifiers.length() > 1){
+                                    String isbn13 = industryIdentifiers.getJSONObject(1).optString("identifier");
+                                    book.setIsbn13(isbn13);
+                                }
+
+
+                                JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+                                if(imageLinks != null){
+                                    String imageLink = imageLinks.optString("smallThumbnail");
+                                    book.setImageUrl(imageLink);
+
+                                }
 
                                 bookList.add(book);
                             }
