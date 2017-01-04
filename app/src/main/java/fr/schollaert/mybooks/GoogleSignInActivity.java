@@ -77,10 +77,10 @@ public class GoogleSignInActivity extends BaseActivity implements
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // User is signed in
+                    // fr.schollaert.mybooks.User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
+                    // fr.schollaert.mybooks.User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
