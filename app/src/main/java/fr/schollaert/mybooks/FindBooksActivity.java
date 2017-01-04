@@ -66,6 +66,9 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
                                 Book book = new Book();
                                 JSONObject item = array.getJSONObject(i);
 
+                                String googleID = item.getString("id");
+                                book.setGoogleID(googleID);
+
                                 JSONObject volumeInfo = item.getJSONObject("volumeInfo");
                                 String title = volumeInfo.getString("title");
                                 book.setTitle(title);

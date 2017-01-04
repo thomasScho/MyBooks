@@ -10,7 +10,15 @@ public class Book implements Serializable {
     private String title;
     private String author;
     private String imageUrl;
+    private String googleID;
 
+    public String getGoogleID() {
+        return googleID;
+    }
+
+    public void setGoogleID(String googleID) {
+        this.googleID = googleID;
+    }
 
     public String getTitle() {
         return title;
