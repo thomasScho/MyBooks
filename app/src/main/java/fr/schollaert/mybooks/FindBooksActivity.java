@@ -87,18 +87,18 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
                                 }
 */
                                 JSONArray authors = volumeInfo.optJSONArray("authors");
-                                if(authors.length() > 0){
+                                if(authors != null && authors.length() > 0){
                                     String author = authors.optString(0);
                                     book.setAuthor(author);
 
                                 }
 
                                 JSONArray industryIdentifiers = volumeInfo.optJSONArray("industryIdentifiers");
-                                if(industryIdentifiers.length() > 0){
+                                if(industryIdentifiers != null && industryIdentifiers.length() > 0){
                                     String isbn10 = industryIdentifiers.getJSONObject(0).optString("identifier");
                                     book.setIsbn10(isbn10);
                                 }
-                                else if(industryIdentifiers.length() > 1){
+                                else if(industryIdentifiers != null && industryIdentifiers.length() > 1){
                                     String isbn13 = industryIdentifiers.getJSONObject(1).optString("identifier");
                                     book.setIsbn13(isbn13);
                                 }
