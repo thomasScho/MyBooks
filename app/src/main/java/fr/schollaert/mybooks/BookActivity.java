@@ -72,6 +72,14 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
             }
         });
 
+        FloatingActionButton fabSee = (FloatingActionButton) findViewById(R.id.fab);
+        fabSee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Vous avez vu ce livre", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         m_bookSelected = (Book) getIntent().getSerializableExtra("item");
 
