@@ -1,6 +1,7 @@
 package fr.schollaert.mybooks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -34,6 +35,10 @@ public class LibraryAdapter extends BaseAdapter {
         return booksList.get(position);
     }
 
+    public Book getBookAtPosition(int position){
+        return booksList.get(position);
+    }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -43,7 +48,7 @@ public class LibraryAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = parent.inflate(context, R.layout.listitem_book, null);
 
-        Book book = (Book) getItem(position);
+        final Book book = (Book) getItem(position);
 
         TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
         tvTitle.setText(book.getTitle());
@@ -55,6 +60,17 @@ public class LibraryAdapter extends BaseAdapter {
        // ImageLoader imageLoader=new ImageLoader(context);
         //imageLoader.DisplayImage(book.getImageUrl(), ivCover);
         Glide.with(context).load(book.getImageUrl()).into(ivCover);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, BookActivity.class);
+                System.out.println("Avant l intent " + book);
+                intent.putExtra("item",  book);
+             v.getContext().startActivity(intent);
+            }
+        });
         return view;
     }
 }
+

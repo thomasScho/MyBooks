@@ -1,10 +1,12 @@
 package fr.schollaert.mybooks;
 
+import java.io.Serializable;
+
 /**
  * Created by Thomas on 02/01/2017.
  */
 
-public class Book {
+public class Book implements Serializable {
     private String title;
     private String author;
     private String imageUrl;

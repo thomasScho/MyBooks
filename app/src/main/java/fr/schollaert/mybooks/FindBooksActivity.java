@@ -6,9 +6,11 @@ import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.loopj.android.http.AsyncHttpClient;
@@ -20,10 +22,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindBooksActivity extends AppCompatActivity  implements  View.OnClickListener {
+public class FindBooksActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -80,11 +84,13 @@ public class FindBooksActivity extends AppCompatActivity  implements  View.OnCli
                             e.printStackTrace();
                         }
 
-                        System.out.println(bookList.get(0).getImageUrl()+ " TOTO ");
-                        System.out.println(bookList.get(3).getImageUrl()+ " TOTO ");
-                        LibraryAdapter  library = new  LibraryAdapter (getApplicationContext(), bookList);
+                        if (bookList.size() == 0) {
+                            Toast.makeText(FindBooksActivity.this, "Aucun livre n'a été trouvé avec ce titre", Toast.LENGTH_LONG).show();
+                        }
+                        LibraryAdapter library = new LibraryAdapter(FindBooksActivity.this, bookList);
                         ListView lv = (ListView) findViewById(R.id.listBookView);
                         lv.setAdapter(library);
+
                     }
 
                     @Override

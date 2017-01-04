@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1014197110558-vrvrschudl54mcv0251kuii38svt13kg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.schollaert.mybooks",
+            "certificate_hash": "B890D831A50639DD2C08069FD80F682BBF5207C3"
+          }
+        },
+        {
           "client_id": "1014197110558-f5qhm6oua6hd7uorj6va4n76qelssf27.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
