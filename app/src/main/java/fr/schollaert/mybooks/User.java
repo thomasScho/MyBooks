@@ -15,6 +15,10 @@ public class User implements Serializable {
     private int age;
     private String sexe;
 
+    public User() {
+
+    }
+
     public String getMail() {
         return mail;
     }
@@ -81,7 +85,11 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "pseudo='" + pseudo + '\'' +
+                ", idUtilisateur='" + idUtilisateur + '\'' +
+                ", mail='" + mail + '\'' +
                 ", userLibrary=" + userLibrary +
+                ", age=" + age +
+                ", sexe='" + sexe + '\'' +
                 '}';
     }
 }

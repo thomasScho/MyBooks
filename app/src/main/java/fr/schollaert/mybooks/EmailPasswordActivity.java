@@ -173,7 +173,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
+                          //  mStatusTextView.setText(R.string.auth_failed);
                         }
                         else{
                             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
