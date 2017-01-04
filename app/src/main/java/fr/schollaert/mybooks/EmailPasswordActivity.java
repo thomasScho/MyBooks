@@ -31,10 +31,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EmailPasswordActivity extends BaseActivity implements
         View.OnClickListener {
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static final String TAG = "EmailPassword";
 
     private TextView mStatusTextView;
@@ -109,7 +111,7 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
     // [END on_stop_remove_listener]
 
-    private void createAccount(String email, String password) {
+    private void createAccount(final String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -132,6 +134,9 @@ public class EmailPasswordActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         else{
+                            User userO = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getEmail());
+                            DatabaseReference refUser = database.getReference("Users");
+                            refUser.child(userO.getIdUtilisateur()).setValue(userO);
                             setContentView(R.layout.activity_menu);
                         }
                         // [START_EXCLUDE]

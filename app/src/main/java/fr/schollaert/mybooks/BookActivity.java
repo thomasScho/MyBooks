@@ -21,6 +21,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import fr.schollaert.mybooks.BookCommentsFragment.*;
 import fr.schollaert.mybooks.BookRatesFragment.*;
 import fr.schollaert.mybooks.BookDescriptionFragment.*;
@@ -42,6 +46,11 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference usersRef = database.getReference("Users");
 
     private Book m_bookSelected;
 
@@ -72,7 +81,7 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
             }
         });
 
-        FloatingActionButton fabSee = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
         fabSee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

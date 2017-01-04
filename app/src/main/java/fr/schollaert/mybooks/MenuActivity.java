@@ -27,7 +27,6 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        System.out.println("TERST " + i);
         if (i == R.id.meButton) {
             startActivity(new Intent(this, MeActivity.class));
         } else if (i == R.id.myBooksButton) {

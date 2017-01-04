@@ -40,6 +40,7 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_books);
         findViewById(R.id.envoyerRecherche).setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
     }
 
 

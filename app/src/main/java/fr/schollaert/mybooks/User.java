@@ -10,9 +10,18 @@ import java.util.ArrayList;
 public class User implements Serializable {
     private String pseudo;
     private String idUtilisateur;
+    private String mail;
     private ArrayList<Book> userLibrary;
     private int age;
-    private char sexe;
+    private String sexe;
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
     public String getPseudo() {
         return pseudo;
@@ -46,15 +55,15 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public char getSexe() {
+    public String getSexe() {
         return sexe;
     }
 
-    public void setSexe(char sexe) {
+    public void setSexe(String sexe) {
         this.sexe = sexe;
     }
 
-    public User(String pseudo, String idUtilisateur, ArrayList<Book> userLibrary, int age, char sexe) {
+    public User(String pseudo, String idUtilisateur, ArrayList<Book> userLibrary, int age, String sexe) {
         this.pseudo = pseudo;
         this.idUtilisateur = idUtilisateur;
         this.userLibrary = userLibrary;
@@ -62,10 +71,11 @@ public class User implements Serializable {
         this.sexe = sexe;
     }
 
-    public User(String pseudo, String idUtilisateur) {
-        this.pseudo = pseudo;
+    public User(String idUtilisateur, String mail) {
+        this.mail = mail;
         this.idUtilisateur = idUtilisateur;
     }
+
 
     @Override
     public String toString() {

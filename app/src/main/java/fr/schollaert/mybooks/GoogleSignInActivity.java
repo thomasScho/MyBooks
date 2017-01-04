@@ -40,6 +40,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
@@ -55,6 +57,7 @@ public class GoogleSignInActivity extends BaseActivity implements
 
     private GoogleApiClient mGoogleApiClient;
 
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,6 +146,9 @@ public class GoogleSignInActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
+                        User userO = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getEmail());
+                        DatabaseReference refUser = database.getReference("Users");
+                        refUser.child(userO.getIdUtilisateur()).setValue(userO);
                         startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                     }
                 });
