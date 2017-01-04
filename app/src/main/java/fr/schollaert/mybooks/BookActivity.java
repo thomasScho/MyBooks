@@ -1,5 +1,8 @@
 package fr.schollaert.mybooks;
 
+import android.content.Context;
+import android.net.Uri;
+import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +21,12 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class BookActivity extends AppCompatActivity {
+import fr.schollaert.mybooks.BookCommentsFragment.*;
+import fr.schollaert.mybooks.BookRatesFragment.*;
+import fr.schollaert.mybooks.BookDescriptionFragment.*;
+
+
+public class BookActivity extends AppCompatActivity implements BookDescriptionFragment.OnFragmentInteractionListener, BookCommentsFragment.OnFragmentInteractionListener, BookRatesFragment.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,6 +43,8 @@ public class BookActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private Book m_bookSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +60,20 @@ public class BookActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Partager ce livre avec vos amis", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
-        Book m_bookSelected = (Book) getIntent().getSerializableExtra("item");
-       
+
+        m_bookSelected = (Book) getIntent().getSerializableExtra("item");
 
     }
 
@@ -86,6 +98,11 @@ public class BookActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**
@@ -118,7 +135,7 @@ public class BookActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_book, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText("Description du livre");
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -128,33 +145,46 @@ public class BookActivity extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        final int PAGE_COUNT = 3;
+        private Context context;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            this.context = context;
         }
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch(position){
+                case 0:
+                    BookDescriptionFragment tab = BookDescriptionFragment.newInstance(m_bookSelected);
+                    return tab;
+                case 1:
+                    BookCommentsFragment tab2 =  BookCommentsFragment.newInstance(m_bookSelected);
+                    return tab2;
+                case 2:
+                    BookRatesFragment tab3 =  BookRatesFragment.newInstance(m_bookSelected);
+                    return tab3;
+                default :
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
+
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            return PAGE_COUNT;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Description";
                 case 1:
-                    return "SECTION 2";
+                    return "Commentaires";
                 case 2:
-                    return "SECTION 3";
+                    return "Notes";
             }
             return null;
         }

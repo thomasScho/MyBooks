@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmailPasswordActivity"></activity>
+        <activity android:name=".EmailPasswordActivity" />
         <activity android:name=".GoogleSignInActivity" />
         <activity android:name=".MeActivity" />
         <activity android:name=".MenuActivity" />
