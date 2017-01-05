@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle"
         android:text="Android Development"
-        android:textColor="#000000"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:layout_width="match_parent"
@@ -22,8 +22,18 @@
         android:id="@+id/tvCommentTitle"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="19dp"/>
+        android:layout_marginTop="19dp"
+        android:textAppearance="@android:style/TextAppearance.Widget.TextView.PopupMenu" />
 
+
+    <TextView
+        android:text="@string/EmptyRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvEmptyRate"
+        android:visibility="visible"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textAlignment="center" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -35,7 +45,8 @@
         android:clickable="false"
         android:focusableInTouchMode="false"
         android:focusable="false"
-        android:isIndicator="true"/>
+        android:isIndicator="true"
+        android:visibility="invisible"/>
 
 
     <TextView
@@ -45,7 +56,8 @@
         android:id="@+id/tvYourRateTitle"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="19dp"/>
+        android:layout_marginTop="19dp"
+        android:textAppearance="@android:style/TextAppearance.Widget.TextView.PopupMenu" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -54,12 +66,13 @@
         android:id="@+id/ratingBarYour"
         android:clickable="true"
         android:numStars="5"
-         />
+        />
 
     <Button
         android:text="@string/Envoyer"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:id="@+id/btnValider"
         android:drawableBottom="@drawable/ic_menu_send"
         style="@style/Widget.AppCompat.Button.Colored"

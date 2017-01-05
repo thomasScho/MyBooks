@@ -90,20 +90,16 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
-                System.out.println(user.getUserLibrary());
                 if(user.getUserLibrary()==null){
                     user.setUserLibrary(new ArrayList<Book>());
                     fabCancelSee.setVisibility(View.GONE);
                     fabSee.setVisibility(View.VISIBLE);
-                    System.out.println("ON SAIT PAS ");
                 }else if (user.getUserLibrary().contains(m_bookSelected)){
                     fabCancelSee.setVisibility(View.VISIBLE);
                     fabSee.setVisibility(View.GONE);
-                    System.out.println("TOTO DEJAVA");
                 }else{
                     fabCancelSee.setVisibility(View.GONE);
                     fabSee.setVisibility(View.VISIBLE);
-                    System.out.println("TOTO NON");
                 }
             }
 

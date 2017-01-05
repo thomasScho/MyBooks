@@ -89,4 +89,5 @@
     <string name="title_activity_my_library">MyLibraryActivity</string>
     <string name="Envoyer">Envoyer</string>
     <string name="VotreCom">Votre commentaire</string>
+    <string name="EmptyRate">Il n\'y a pas encore de note disponible pour ce livre</string>
 </resources>

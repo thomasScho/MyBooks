@@ -7,6 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import fr.schollaert.mybooks.model.Book;
 
@@ -23,8 +31,15 @@ public class BookRatesFragment extends Fragment {
     private static final String ARG_PARAM1 = "book";
 
     private Book mBook;
-
+    int mbookRate = 0;
     private OnFragmentInteractionListener mListener;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference booksRef = database.getReference("Books");
+    TextView tvEmptyRate;
+    RatingBar rbBook;
+    Book mBookDB = new Book();
+    RatingBar rbYourRate;
 
     public BookRatesFragment() {
         // Required empty public constructor
@@ -56,8 +71,40 @@ public class BookRatesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_rates, container, false);
+        View view = inflater.inflate(R.layout.fragment_book_rates, container, false);
+
+        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+        tvTitle.setText(mBook.getTitle() + ", " + mBook.getAuthor());
+
+        tvEmptyRate = (TextView) view.findViewById(R.id.tvEmptyRate);
+        rbBook = (RatingBar) view.findViewById(R.id.ratingBarBook);
+        rbYourRate = (RatingBar) view.findViewById(R.id.ratingBarYour);
+
+        DatabaseReference thisBookRef = booksRef.child(mBook.getGoogleID());
+        thisBookRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mBookDB = dataSnapshot.getValue(Book.class);
+                mbookRate = 0;
+                if (mBookDB != null && mBook.getRates() != null) {
+                    for (int i = 0; i < mBookDB.getRates().size(); i++) {
+                        mbookRate += mBookDB.getRates().get(i);
+                    }
+                    mbookRate /= mBookDB.getRates().size();
+                    tvEmptyRate.setVisibility(View.GONE);
+                    rbBook.setVisibility(View.VISIBLE);
+                    rbBook.setRating(mbookRate);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
