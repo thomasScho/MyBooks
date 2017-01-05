@@ -1,7 +1,9 @@
 package fr.schollaert.mybooks;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,7 +20,7 @@ import fr.schollaert.mybooks.adapter.ParamAdapter;
 import fr.schollaert.mybooks.model.Param;
 import fr.schollaert.mybooks.model.User;
 
-public class MeActivity extends AppCompatActivity {
+public class MeActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -35,6 +37,8 @@ public class MeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
 
+        findViewById(R.id.btn_seeBooks).setOnClickListener(this);
+        findViewById(R.id.btn_seeFriends).setOnClickListener(this);
 
         thisUserRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,4 +65,13 @@ public class MeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.btn_seeBooks) {
+            startActivity(new Intent(this, MyLibraryActivity.class));
+        }else if(i == R.id.btn_seeFriends){
+            startActivity(new Intent(this, MyFriendsActivity.class));
+        }
+    }
 }

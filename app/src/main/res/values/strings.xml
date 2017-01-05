@@ -85,4 +85,6 @@
     <string name="Valider">Valider</string>
     <string name="paramNAme">Nom du paramêtre</string>
     <string name="paramValue">Valeur du paramêtre</string>
+    <string name="title_activity_my_friends">MyFriendsActivity</string>
+    <string name="title_activity_my_library">MyLibraryActivity</string>
 </resources>

@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         if (i == R.id.meButton) {
             startActivity(new Intent(this, MeActivity.class));
         } else if (i == R.id.myBooksButton) {
-            startActivity(new Intent(this, MyBooksActivity.class));
+            startActivity(new Intent(this, MyLibraryActivity.class));
         } else if (i == R.id.findBookButton) {
             startActivity(new Intent(this, FindBooksActivity.class));
         }else if (i == R.id.myCommentButton) {

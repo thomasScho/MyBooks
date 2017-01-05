@@ -37,7 +37,15 @@
             android:name=".BookActivity"
             android:label="@string/title_activity_book"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditParamActivity"></activity>
+        <activity android:name=".EditParamActivity" />
+        <activity
+            android:name=".MyFriendsActivity"
+            android:label="@string/title_activity_my_friends"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyLibraryActivity"
+            android:label="@string/title_activity_my_library"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
