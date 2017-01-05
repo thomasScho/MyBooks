@@ -54,13 +54,12 @@
         android:id="@+id/ratingBarYour"
         android:clickable="true"
         android:numStars="5"
-        />
+         />
 
     <Button
         android:text="@string/Envoyer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:id="@+id/btnValider"
         android:drawableBottom="@drawable/ic_menu_send"
         style="@style/Widget.AppCompat.Button.Colored"

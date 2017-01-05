@@ -22,10 +22,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import fr.schollaert.mybooks.model.Book;
+import fr.schollaert.mybooks.model.User;
 
 
 public class BookActivity extends AppCompatActivity implements BookDescriptionFragment.OnFragmentInteractionListener, BookCommentsFragment.OnFragmentInteractionListener, BookRatesFragment.OnFragmentInteractionListener {
@@ -49,6 +55,7 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
     private FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference usersRef = database.getReference("Users");
+    User user = new User();
 
     private Book m_bookSelected;
 
@@ -56,6 +63,9 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,6 +80,18 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        thisUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,16 +102,28 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
         });
 
         FloatingActionButton fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
+
+
+        m_bookSelected = (Book) getIntent().getSerializableExtra("item");
+
         fabSee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Vous avez vu ce livre", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                System.out.println("TOTO 1 " );
+                System.out.println(user);
+                if(user.getUserLibrary()==null){
+                    user.setUserLibrary(new ArrayList<Book>());
+                }
+                if (!user.getUserLibrary().contains(m_bookSelected)) {
+                    user.getUserLibrary().add(m_bookSelected);
+                    System.out.println("TOTO " );
+                    System.out.println(user);
+                }
+                usersRef.child(user.getIdUtilisateur()).setValue(user);
             }
         });
-
-        m_bookSelected = (Book) getIntent().getSerializableExtra("item");
-
     }
 
 
@@ -170,17 +204,17 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
 
         @Override
         public Fragment getItem(int position) {
-            switch(position){
+            switch (position) {
                 case 0:
                     BookDescriptionFragment tab = BookDescriptionFragment.newInstance(m_bookSelected);
                     return tab;
                 case 1:
-                    BookCommentsFragment tab2 =  BookCommentsFragment.newInstance(m_bookSelected);
+                    BookCommentsFragment tab2 = BookCommentsFragment.newInstance(m_bookSelected);
                     return tab2;
                 case 2:
-                    BookRatesFragment tab3 =  BookRatesFragment.newInstance(m_bookSelected);
+                    BookRatesFragment tab3 = BookRatesFragment.newInstance(m_bookSelected);
                     return tab3;
-                default :
+                default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
 

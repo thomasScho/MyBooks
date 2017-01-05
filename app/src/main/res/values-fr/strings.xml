@@ -31,4 +31,9 @@
     <string name="VoirAmis">Voir ses amis</string>
     <string name="amis">Amis</string>
     <string name="Valider">Valider</string>
+    <string name="title_activity_my_friends">Mes amis</string>
+    <string name="title_activity_my_library">Ma bibliothèque</string>
+    <string name="title_activity_finding">Rechercher un livre</string>
+    <string name="Envoyer">Envoyer</string>
+    <string name="VotreCom">Votre commentaire</string>
 </resources>

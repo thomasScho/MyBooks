@@ -25,9 +25,6 @@
             android:label="@string/title_activity_me" />
         <activity android:name=".MenuActivity" />
         <activity
-            android:name=".MyBooksActivity"
-            android:label="@string/title_activity_books" />
-        <activity
             android:name=".FindBooksActivity"
             android:label="@string/title_activity_finding" />
         <activity

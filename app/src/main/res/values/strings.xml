@@ -87,4 +87,6 @@
     <string name="paramValue">Valeur du paramêtre</string>
     <string name="title_activity_my_friends">MyFriendsActivity</string>
     <string name="title_activity_my_library">MyLibraryActivity</string>
+    <string name="Envoyer">Envoyer</string>
+    <string name="VotreCom">Votre commentaire</string>
 </resources>

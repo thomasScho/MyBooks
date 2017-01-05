@@ -1,13 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="fr.schollaert.mybooks.BookCommentsFragment">
+    tools:context="fr.schollaert.mybooks.BookDescriptionFragment"
+    android:layout_height="wrap_content"
+    android:padding="17dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTitle"
+        android:text="Android Development"
+        android:textColor="#000000"
+        android:layout_gravity="center_horizontal" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Place pour les commentaires" />
+        android:layout_height="93dp"
+        android:text="Place pour les commentaires"
+        android:id="@+id/tvCommentTitle"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="19dp"/>
 
-</FrameLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="237dp"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="19dp"
+        android:id="@+id/lvBookComments" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/et_yourComment"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="19dp"
+        android:hint="@string/VotreCom"/>
+
+    <Button
+        android:text="@string/Envoyer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnValider"
+        android:drawableBottom="@drawable/ic_menu_send"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="19dp" />
+
+</LinearLayout>

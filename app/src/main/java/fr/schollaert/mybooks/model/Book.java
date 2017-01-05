@@ -2,8 +2,10 @@ package fr.schollaert.mybooks.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Thomas on 02/01/2017.
@@ -18,6 +20,9 @@ public class Book implements Serializable {
     private String isbn10;
     private String isbn13;
     private SimpleDateFormat publishedDate;
+    private List<Integer> rates;
+    private List<String> comments;
+
 
     public String getIsbn10() {
         return isbn10;
@@ -83,12 +88,38 @@ public class Book implements Serializable {
         this.imageUrl = imageLink;
     }
 
+    public List<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<String> comments) {
+        this.comments = comments;
+    }
+
+    public List<Integer> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Integer> rates) {
+        this.rates = rates;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", googleID='" + googleID + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", isbn10='" + isbn10 + '\'' +
+                ", isbn13='" + isbn13 + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", rates=" + rates +
+                ", comments=" + comments +
                 '}';
     }
+
+
 }
 
