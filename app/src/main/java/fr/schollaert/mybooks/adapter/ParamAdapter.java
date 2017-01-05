@@ -1,6 +1,7 @@
 package fr.schollaert.mybooks.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fr.schollaert.mybooks.EditParamActivity;
 import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Param;
 
@@ -44,6 +46,15 @@ public class ParamAdapter extends BaseAdapter {
 
         TextView tvParamValue = (TextView) view.findViewById(R.id.tvParamValue);
         tvParamValue.setText(paramName.getDescription());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditParamActivity.class);
+                intent.putExtra("item", paramName);
+                v.getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }

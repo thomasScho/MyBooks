@@ -30,4 +30,5 @@
     <string name="MonCompte">Mon Compte</string>
     <string name="VoirAmis">Voir ses amis</string>
     <string name="amis">Amis</string>
+    <string name="Valider">Valider</string>
 </resources>

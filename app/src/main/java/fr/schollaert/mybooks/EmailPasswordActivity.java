@@ -26,6 +26,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -48,6 +51,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
+    private GoogleApiClient mGoogleApiClient;
     // [END declare_auth]
 
     // [START declare_auth_listener]
@@ -73,6 +77,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
+
         // [END initialize_auth]
 
         // [START auth_state_listener]
@@ -188,7 +193,13 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
 
     private void signOut() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
         mAuth.signOut();
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         updateUI(null);
     }
 

@@ -20,19 +20,24 @@
         </activity>
         <activity android:name=".EmailPasswordActivity" />
         <activity android:name=".GoogleSignInActivity" />
-        <activity android:name=".MeActivity"
-            android:label="@string/title_activity_me"/>
+        <activity
+            android:name=".MeActivity"
+            android:label="@string/title_activity_me" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".MyBooksActivity"
-            android:label="@string/title_activity_books"/>
-        <activity android:name=".FindBooksActivity"
-            android:label="@string/title_activity_finding"/>
-        <activity android:name=".MyCommentsActivity"
-            android:label="@string/title_activity_comments"/>
+        <activity
+            android:name=".MyBooksActivity"
+            android:label="@string/title_activity_books" />
+        <activity
+            android:name=".FindBooksActivity"
+            android:label="@string/title_activity_finding" />
+        <activity
+            android:name=".MyCommentsActivity"
+            android:label="@string/title_activity_comments" />
         <activity
             android:name=".BookActivity"
             android:label="@string/title_activity_book"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditParamActivity"></activity>
     </application>
 
 </manifest>

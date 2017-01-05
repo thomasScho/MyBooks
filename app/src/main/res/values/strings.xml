@@ -82,4 +82,7 @@
     <string name="VoirAmis">Voir ses amis</string>
     <string name="amis">Amis</string>
     <string name="library">Bibliothèque</string>
+    <string name="Valider">Valider</string>
+    <string name="paramNAme">Nom du paramêtre</string>
+    <string name="paramValue">Valeur du paramêtre</string>
 </resources>
