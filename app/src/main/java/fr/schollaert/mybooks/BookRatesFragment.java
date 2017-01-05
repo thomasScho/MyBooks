@@ -3,10 +3,12 @@ package fr.schollaert.mybooks;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -15,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import fr.schollaert.mybooks.model.Book;
 
@@ -36,10 +40,12 @@ public class BookRatesFragment extends Fragment {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference booksRef = database.getReference("Books");
+    DatabaseReference thisBookRef;
     TextView tvEmptyRate;
     RatingBar rbBook;
-    Book mBookDB = new Book();
+    Book mBookDB;
     RatingBar rbYourRate;
+    Button sendRateButton;
 
     public BookRatesFragment() {
         // Required empty public constructor
@@ -79,14 +85,25 @@ public class BookRatesFragment extends Fragment {
         tvEmptyRate = (TextView) view.findViewById(R.id.tvEmptyRate);
         rbBook = (RatingBar) view.findViewById(R.id.ratingBarBook);
         rbYourRate = (RatingBar) view.findViewById(R.id.ratingBarYour);
+        sendRateButton = (Button) view.findViewById(R.id.btnValider);
 
-        DatabaseReference thisBookRef = booksRef.child(mBook.getGoogleID());
+        thisBookRef = booksRef.child(mBook.getGoogleID());
         thisBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mBookDB = dataSnapshot.getValue(Book.class);
+                System.out.println("Note ");
+                System.out.println(mBookDB);
                 mbookRate = 0;
-                if (mBookDB != null && mBook.getRates() != null) {
+                if (mBookDB == null) {
+                    System.out.println("Note null ");
+                    mBookDB = new Book(mBook);
+                    mBookDB.setRates(new ArrayList<Float>());
+                } else if (mBookDB.getRates() == null) {
+                    System.out.println("Note defo");
+                    mBookDB.setRates(new ArrayList<Float>());
+                } else {
+                    System.out.println("Note 1");
                     for (int i = 0; i < mBookDB.getRates().size(); i++) {
                         mbookRate += mBookDB.getRates().get(i);
                     }
@@ -103,6 +120,16 @@ public class BookRatesFragment extends Fragment {
             }
         });
 
+        sendRateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float rate = rbYourRate.getRating();
+                mBookDB.getRates().add(rate);
+                booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
+                Snackbar.make(v, "Note ajoutée, merci", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         return view;
     }

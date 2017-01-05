@@ -20,9 +20,34 @@ public class Book implements Serializable {
     private String isbn10;
     private String isbn13;
     private SimpleDateFormat publishedDate;
-    private List<Integer> rates;
+    private List<Float> rates;
     private List<String> comments;
+    private Float yourRate;
 
+
+    public Book(Book b) {
+        this.title = b.getTitle();
+        this.author = b.getAuthor();
+        this.imageUrl = b.getImageUrl();
+        this.googleID = b.getGoogleID();
+        this.subTitle = b.getSubTitle();
+        this.isbn10 = b.getIsbn10();
+        this.isbn13 = b.getIsbn13();
+        this.publishedDate = b.getPublishedDate();
+        this.rates = b.getRates();
+        this.comments = b.getComments();
+        this.yourRate = b.getYourRate();
+    }
+
+    public Book() {
+    }
+
+    public Book(String title, String author, String imageUrl, String googleID) {
+        this.title = title;
+        this.author = author;
+        this.imageUrl = imageUrl;
+        this.googleID = googleID;
+    }
 
     public String getIsbn10() {
         return isbn10;
@@ -96,12 +121,20 @@ public class Book implements Serializable {
         this.comments = comments;
     }
 
-    public List<Integer> getRates() {
+    public List<Float> getRates() {
         return rates;
     }
 
-    public void setRates(List<Integer> rates) {
+    public void setRates(List<Float> rates) {
         this.rates = rates;
+    }
+
+    public Float getYourRate() {
+        return yourRate;
+    }
+
+    public void setYourRate(Float yourRate) {
+        this.yourRate = yourRate;
     }
 
     @Override
