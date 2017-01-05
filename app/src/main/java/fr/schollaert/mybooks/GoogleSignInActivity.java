@@ -37,8 +37,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import fr.schollaert.mybooks.model.User;
 
@@ -54,6 +57,7 @@ public class GoogleSignInActivity extends BaseActivity implements
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    User user;
     private GoogleApiClient mGoogleApiClient;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -145,9 +149,24 @@ public class GoogleSignInActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
-                        User userO = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getEmail());
                         DatabaseReference refUser = database.getReference("Users");
-                        refUser.child(userO.getIdUtilisateur()).setValue(userO);
+                        DatabaseReference thisUserRef = refUser.child(mAuth.getCurrentUser().getUid());
+
+                        thisUserRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                user = dataSnapshot.getValue(User.class);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                        if(user != null){
+                            user = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getEmail());
+                            refUser.child(user.getIdUtilisateur()).setValue(user);
+                        }
                         startActivity(new Intent(getApplicationContext(), MenuActivity.class));
                     }
                 });
