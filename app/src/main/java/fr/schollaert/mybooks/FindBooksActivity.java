@@ -1,13 +1,8 @@
 package fr.schollaert.mybooks;
 
-import android.content.Context;
-import android.content.Intent;
-import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,21 +10,17 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.*;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.*;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+
+import fr.schollaert.mybooks.adapter.LibraryAdapter;
+import fr.schollaert.mybooks.model.Book;
 
 public class FindBooksActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;

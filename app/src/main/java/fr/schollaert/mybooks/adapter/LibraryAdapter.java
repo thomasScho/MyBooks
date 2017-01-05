@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import fr.schollaert.mybooks.lazylist.ImageLoader;
+import fr.schollaert.mybooks.BookActivity;
+import fr.schollaert.mybooks.R;
+import fr.schollaert.mybooks.model.Book;
 
 
 public class LibraryAdapter extends BaseAdapter {

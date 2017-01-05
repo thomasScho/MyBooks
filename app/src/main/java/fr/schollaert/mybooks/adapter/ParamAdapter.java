@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+
+import fr.schollaert.mybooks.R;
+import fr.schollaert.mybooks.model.Param;
 
 /**
  * Created by Thomas on 04/01/2017.

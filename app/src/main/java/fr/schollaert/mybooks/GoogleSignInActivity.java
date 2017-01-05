@@ -20,9 +20,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -42,6 +39,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import fr.schollaert.mybooks.model.User;
 
 /**
  * Demonstrate Firebase Authentication using a Google ID Token.
@@ -80,10 +79,10 @@ public class GoogleSignInActivity extends BaseActivity implements
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // fr.schollaert.mybooks.User is signed in
+                    // fr.schollaert.mybooks.model.User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // fr.schollaert.mybooks.User is signed out
+                    // fr.schollaert.mybooks.model.User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }

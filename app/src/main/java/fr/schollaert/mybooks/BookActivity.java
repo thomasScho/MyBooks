@@ -25,9 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import fr.schollaert.mybooks.BookCommentsFragment.*;
-import fr.schollaert.mybooks.BookRatesFragment.*;
-import fr.schollaert.mybooks.BookDescriptionFragment.*;
+import fr.schollaert.mybooks.model.Book;
 
 
 public class BookActivity extends AppCompatActivity implements BookDescriptionFragment.OnFragmentInteractionListener, BookCommentsFragment.OnFragmentInteractionListener, BookRatesFragment.OnFragmentInteractionListener {

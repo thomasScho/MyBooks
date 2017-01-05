@@ -1,7 +1,9 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import fr.schollaert.mybooks.model.Book;
 
 /**
  * Created by Thomas on 04/01/2017.

@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import fr.schollaert.mybooks.model.Book;
+
 
 /**
  * A simple {@link Fragment} subclass.

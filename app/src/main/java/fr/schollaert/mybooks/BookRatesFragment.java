@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import fr.schollaert.mybooks.model.Book;
+
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

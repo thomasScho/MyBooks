@@ -34,6 +34,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import fr.schollaert.mybooks.model.User;
+
 public class EmailPasswordActivity extends BaseActivity implements
         View.OnClickListener {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -79,10 +81,10 @@ public class EmailPasswordActivity extends BaseActivity implements
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // fr.schollaert.mybooks.User is signed in
+                    // fr.schollaert.mybooks.model.User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // fr.schollaert.mybooks.User is signed out
+                    // fr.schollaert.mybooks.model.User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
                 // [START_EXCLUDE]

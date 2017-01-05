@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,6 +13,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.schollaert.mybooks.adapter.ParamAdapter;
+import fr.schollaert.mybooks.model.Param;
+import fr.schollaert.mybooks.model.User;
 
 public class MeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
