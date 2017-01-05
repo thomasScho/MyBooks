@@ -53,6 +53,19 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_menu_view"
         android:id="@+id/fabSee"
-        android:clickable="false" />
+        android:clickable="false"
+        android:visibility="invisible"
+      />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_visibility_off_black_24dp"
+        android:id="@+id/fabCancelSee"
+        android:clickable="false"
+        android:visibility="visible"
+      />/>
 
 </android.support.design.widget.CoordinatorLayout>

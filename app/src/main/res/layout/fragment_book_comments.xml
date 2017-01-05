@@ -17,7 +17,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="93dp"
+        android:layout_height="47dp"
         android:text="Place pour les commentaires"
         android:id="@+id/tvCommentTitle"
         android:layout_marginLeft="5dp"
@@ -45,13 +45,14 @@
 
     <Button
         android:text="@string/Envoyer"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnValider"
         android:drawableBottom="@drawable/ic_menu_send"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="19dp" />
+        android:layout_marginTop="19dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

@@ -56,7 +56,8 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference usersRef = database.getReference("Users");
     User user = new User();
-
+    FloatingActionButton fabSee;
+    FloatingActionButton fabCancelSee;
     private Book m_bookSelected;
 
     @Override
@@ -80,10 +81,30 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+         fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
+         fabCancelSee = (FloatingActionButton) findViewById(R.id.fabCancelSee);
+        m_bookSelected = (Book) getIntent().getSerializableExtra("item");
+
+
         thisUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
+                System.out.println(user.getUserLibrary());
+                if(user.getUserLibrary()==null){
+                    user.setUserLibrary(new ArrayList<Book>());
+                    fabCancelSee.setVisibility(View.GONE);
+                    fabSee.setVisibility(View.VISIBLE);
+                    System.out.println("ON SAIT PAS ");
+                }else if (user.getUserLibrary().contains(m_bookSelected)){
+                    fabCancelSee.setVisibility(View.VISIBLE);
+                    fabSee.setVisibility(View.GONE);
+                    System.out.println("TOTO DEJAVA");
+                }else{
+                    fabCancelSee.setVisibility(View.GONE);
+                    fabSee.setVisibility(View.VISIBLE);
+                    System.out.println("TOTO NON");
+                }
             }
 
             @Override
@@ -101,29 +122,37 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
             }
         });
 
-        FloatingActionButton fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
 
 
-        m_bookSelected = (Book) getIntent().getSerializableExtra("item");
+
+
+
+
+        fabCancelSee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (user.getUserLibrary().contains(m_bookSelected)) {
+                    user.getUserLibrary().remove(m_bookSelected);
+                }
+                usersRef.child(user.getIdUtilisateur()).setValue(user);
+                Snackbar.make(view, "Livre supprimé de votre bibliothèque", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         fabSee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Vous avez vu ce livre", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                System.out.println("TOTO 1 " );
-                System.out.println(user);
-                if(user.getUserLibrary()==null){
-                    user.setUserLibrary(new ArrayList<Book>());
-                }
                 if (!user.getUserLibrary().contains(m_bookSelected)) {
                     user.getUserLibrary().add(m_bookSelected);
-                    System.out.println("TOTO " );
-                    System.out.println(user);
                 }
                 usersRef.child(user.getIdUtilisateur()).setValue(user);
+                Snackbar.make(view, "Livre ajouté à votre bibliothèque", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
+
+
     }
 
 
