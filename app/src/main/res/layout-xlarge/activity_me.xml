@@ -14,21 +14,20 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true">
+        android:weightSum="1">
 
         <ListView
             android:id="@+id/listParam"
-            android:layout_width="320dp"
-            android:layout_height="309dp"
+            android:layout_width="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:layout_height="313dp">
         </ListView>
 
         <Button
@@ -45,6 +44,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_seeBooks"
             android:drawableBottom="@drawable/boook_24dp"
+            android:gravity="center_horizontal"
             style="@style/Widget.AppCompat.Button.Colored" />
     </LinearLayout>
 </RelativeLayout>

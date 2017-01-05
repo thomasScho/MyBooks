@@ -28,4 +28,6 @@
     <string name="texteAchercher">Titre du livre</string>
     <string name="Rechercher">Rechercher</string>
     <string name="MonCompte">Mon Compte</string>
+    <string name="VoirAmis">Voir ses amis</string>
+    <string name="amis">Amis</string>
 </resources>

@@ -79,4 +79,7 @@
     <string name="title_activity_books">Mes livres</string>
     <string name="title_activity_comments">Mes discussions</string>
     <string name="title_activity_finding">Rechercher un livre</string>
+    <string name="VoirAmis">Voir ses amis</string>
+    <string name="amis">Amis</string>
+    <string name="library">Bibliothèque</string>
 </resources>

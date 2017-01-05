@@ -43,15 +43,15 @@ public class MeActivity extends AppCompatActivity {
                 paramList = new ArrayList<>();
                 Param mail = new Param("Email", user.getMail());
                 Param pseudo = new Param("Pseudo", user.getPseudo());
-                // Param age = new Param("Age", (String) user.getAge());
+                Param age = new Param("Age", String.valueOf(user.getAge()));
                 Param sexe = new Param("Sexe", user.getSexe());
                 paramList.add(mail);
                 paramList.add(pseudo);
                 paramList.add(sexe);
+                paramList.add(age);
                 ParamAdapter adaptParam = new ParamAdapter(MeActivity.this, paramList);
                 ListView lv = (ListView) findViewById(R.id.listParam);
                 lv.setAdapter(adaptParam);
-
             }
 
             @Override
