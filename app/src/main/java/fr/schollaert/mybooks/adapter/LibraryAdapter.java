@@ -59,7 +59,9 @@ public class LibraryAdapter extends BaseAdapter {
         tvAuthor.setText(book.getAuthor());
 
         ImageView ivCover = (ImageView) view.findViewById(R.id.ivCover);
-        Glide.with(context).load(book.getImageUrl()).into(ivCover);
+        if(book.getImageUrl() != "" && book.getImageUrl() != null){
+            Glide.with(context).load(book.getImageUrl()).into(ivCover);
+        }
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

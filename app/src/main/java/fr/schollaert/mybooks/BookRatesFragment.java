@@ -139,11 +139,17 @@ public class BookRatesFragment extends Fragment {
         sendRateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                float rate = rbYourRate.getRating();
-                mBookDB.getRates().add(rate);
-                booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
-                Snackbar.make(v, "Note ajoutée, merci", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (user != null && user.getUserLibrary() != null && user.getUserLibrary().contains(mBook)) {
+                    float rate = rbYourRate.getRating();
+                    mBookDB.getRates().add(rate);
+                    booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
+                    Snackbar.make(v, "Note ajoutée, merci", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }else{
+                    Snackbar.make(v, "Il faut avoir lu un livre pour le juger", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+
             }
         });
 

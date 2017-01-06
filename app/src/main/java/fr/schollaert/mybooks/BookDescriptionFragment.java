@@ -70,6 +70,10 @@ public class BookDescriptionFragment extends Fragment {
 
         ImageView ivCover = (ImageView) view.findViewById(R.id.ivCover);
         Glide.with(getContext()).load(mBook.getImageUrl()).into(ivCover);
+        if(mBook.getImageUrl() != "" && mBook.getImageUrl() != null){
+            Glide.with(getContext()).load(mBook.getImageUrl()).into(ivCover);
+        }
+
 
         return view;
     }

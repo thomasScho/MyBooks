@@ -12,8 +12,7 @@
             android:layout_height="116dp"
             android:id="@+id/ivCover"
             android:src="@drawable/book1"
-            android:layout_gravity="center_horizontal"
-            android:background="#FF0000"/>
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
