@@ -155,7 +155,7 @@ public class BookRatesFragment extends Fragment {
                             Snackbar.make(v, "Vous avez déjà noté ce livre", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
                             dejaNote = true;
-
+                            rbYourRate.setRating(b.getYourRate());
                         }
                     }
                     if (!dejaNote) {
@@ -175,6 +175,7 @@ public class BookRatesFragment extends Fragment {
                 } else {
                     Snackbar.make(v, "Il faut avoir lu un livre pour le juger", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    rbYourRate.setRating(0);
                 }
 
             }
