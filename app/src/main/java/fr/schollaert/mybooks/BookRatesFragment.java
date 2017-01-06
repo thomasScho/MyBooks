@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import fr.schollaert.mybooks.model.Book;
+import fr.schollaert.mybooks.model.User;
 
 
 /**
@@ -37,10 +39,13 @@ public class BookRatesFragment extends Fragment {
     private Book mBook;
     int mbookRate = 0;
     private OnFragmentInteractionListener mListener;
-
+    private FirebaseAuth mAuth;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference booksRef = database.getReference("Books");
+    DatabaseReference usersRef = database.getReference("Users");
+    User user = new User();
     DatabaseReference thisBookRef;
+    DatabaseReference thisUserRef;
     TextView tvEmptyRate;
     RatingBar rbBook;
     Book mBookDB;
@@ -87,23 +92,34 @@ public class BookRatesFragment extends Fragment {
         rbYourRate = (RatingBar) view.findViewById(R.id.ratingBarYour);
         sendRateButton = (Button) view.findViewById(R.id.btnValider);
 
+
+        mAuth = FirebaseAuth.getInstance();
+        thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
+
+        thisUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         thisBookRef = booksRef.child(mBook.getGoogleID());
         thisBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mBookDB = dataSnapshot.getValue(Book.class);
-                System.out.println("Note ");
-                System.out.println(mBookDB);
                 mbookRate = 0;
                 if (mBookDB == null) {
-                    System.out.println("Note null ");
                     mBookDB = new Book(mBook);
                     mBookDB.setRates(new ArrayList<Float>());
                 } else if (mBookDB.getRates() == null) {
-                    System.out.println("Note defo");
                     mBookDB.setRates(new ArrayList<Float>());
                 } else {
-                    System.out.println("Note 1");
                     for (int i = 0; i < mBookDB.getRates().size(); i++) {
                         mbookRate += mBookDB.getRates().get(i);
                     }

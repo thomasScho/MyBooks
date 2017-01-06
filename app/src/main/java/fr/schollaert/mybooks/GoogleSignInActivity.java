@@ -61,6 +61,8 @@ public class GoogleSignInActivity extends BaseActivity implements
     private GoogleApiClient mGoogleApiClient;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference refUser = database.getReference("Users");
+    DatabaseReference thisUserRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,13 +151,18 @@ public class GoogleSignInActivity extends BaseActivity implements
                                     Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
-                        DatabaseReference refUser = database.getReference("Users");
-                        DatabaseReference thisUserRef = refUser.child(mAuth.getCurrentUser().getUid());
+
+                        thisUserRef = refUser.child(mAuth.getCurrentUser().getUid());
 
                         thisUserRef.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 user = dataSnapshot.getValue(User.class);
+                                if(user == null){
+                                    user = new User(mAuth.getCurrentUser().getUid(), mAuth.getCurrentUser().getEmail());
+                                    user.setPseudo(mAuth.getCurrentUser().getDisplayName());
+                                    refUser.child(user.getIdUtilisateur()).setValue(user);
+                                }
                             }
 
                             @Override

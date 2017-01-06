@@ -81,8 +81,8 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-         fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
-         fabCancelSee = (FloatingActionButton) findViewById(R.id.fabCancelSee);
+        fabSee = (FloatingActionButton) findViewById(R.id.fabSee);
+        fabCancelSee = (FloatingActionButton) findViewById(R.id.fabCancelSee);
         m_bookSelected = (Book) getIntent().getSerializableExtra("item");
 
 
@@ -90,14 +90,21 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
-                if(user.getUserLibrary()==null){
+                if(user == null){
+                    user = new User(mAuth.getCurrentUser().getUid(),mAuth.getCurrentUser().getEmail());
+                    user.setUserLibrary(new ArrayList<Book>());
+                    usersRef.child(user.getIdUtilisateur()).setValue(user);
+                    fabCancelSee.setVisibility(View.GONE);
+                    fabSee.setVisibility(View.VISIBLE);
+                }
+                else if (user.getUserLibrary() == null) {
                     user.setUserLibrary(new ArrayList<Book>());
                     fabCancelSee.setVisibility(View.GONE);
                     fabSee.setVisibility(View.VISIBLE);
-                }else if (user.getUserLibrary().contains(m_bookSelected)){
+                } else if (user.getUserLibrary().contains(m_bookSelected)) {
                     fabCancelSee.setVisibility(View.VISIBLE);
                     fabSee.setVisibility(View.GONE);
-                }else{
+                } else {
                     fabCancelSee.setVisibility(View.GONE);
                     fabSee.setVisibility(View.VISIBLE);
                 }
@@ -117,11 +124,6 @@ public class BookActivity extends AppCompatActivity implements BookDescriptionFr
                         .setAction("Action", null).show();
             }
         });
-
-
-
-
-
 
 
         fabCancelSee.setOnClickListener(new View.OnClickListener() {
