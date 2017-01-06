@@ -9,7 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.schollaert.mybooks.adapter.CommentAdapter;
 import fr.schollaert.mybooks.model.Book;
+import fr.schollaert.mybooks.model.Comment;
+import fr.schollaert.mybooks.model.User;
 
 
 /**
@@ -26,6 +39,17 @@ public class BookCommentsFragment extends Fragment {
     private Book mBook;
 
     private OnFragmentInteractionListener mListener;
+
+    private FirebaseAuth mAuth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference booksRef = database.getReference("Books");
+    DatabaseReference usersRef = database.getReference("Users");
+    User user = new User();
+    DatabaseReference thisBookRef;
+    DatabaseReference thisUserRef;
+    Book mBookDB;
+
+    List<Comment> commentList = new ArrayList<>();
 
     public BookCommentsFragment() {
         // Required empty public constructor
@@ -59,14 +83,35 @@ public class BookCommentsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book_comments, container,false);
+        mAuth = FirebaseAuth.getInstance();
+         thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
+         thisBookRef = booksRef.child(mBook.getGoogleID());
+
+        thisBookRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mBookDB = dataSnapshot.getValue(Book.class);
+                if(mBookDB != null && mBookDB.getComments()!=null){
+                    CommentAdapter commentAdapter = new CommentAdapter(getContext(), mBookDB.getComments());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
         tvTitle.setText(mBook.getTitle() + ", " + mBook.getAuthor());
 
+
+
+
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    // TODORename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

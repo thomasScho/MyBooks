@@ -28,6 +28,7 @@ public class BookDescriptionFragment extends Fragment {
 
     private Book mBook;
 
+
     private OnFragmentInteractionListener mListener;
 
     public BookDescriptionFragment() {
