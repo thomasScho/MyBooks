@@ -193,14 +193,9 @@ public class EmailPasswordActivity extends BaseActivity implements
     }
 
     private void signOut() {
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        mAuth.signOut();
         Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-        updateUI(null);
+        mGoogleApiClient.disconnect();
+        mAuth.signOut();
     }
 
     private boolean validateForm() {

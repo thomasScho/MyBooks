@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +50,7 @@ public class BookCommentsFragment extends Fragment {
     DatabaseReference thisUserRef;
     Book mBookDB;
 
+    View view;
     List<Comment> commentList = new ArrayList<>();
 
     public BookCommentsFragment() {
@@ -82,7 +84,7 @@ public class BookCommentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_book_comments, container,false);
+         view = inflater.inflate(R.layout.fragment_book_comments, container,false);
         mAuth = FirebaseAuth.getInstance();
          thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
          thisBookRef = booksRef.child(mBook.getGoogleID());
@@ -93,6 +95,17 @@ public class BookCommentsFragment extends Fragment {
                 mBookDB = dataSnapshot.getValue(Book.class);
                 if(mBookDB != null && mBookDB.getComments()!=null){
                     CommentAdapter commentAdapter = new CommentAdapter(getContext(), mBookDB.getComments());
+                    ListView lv = (ListView) view.findViewById(R.id.lvBookComments);
+                    lv.setAdapter(commentAdapter);
+                    lv.setVisibility(View.VISIBLE);
+                    TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
+                    tvMessage.setVisibility(View.GONE);
+                }else{
+                    ListView lv = (ListView) view.findViewById(R.id.lvBookComments);
+                    lv.setVisibility(View.GONE);
+                    TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
+                    tvMessage.setText("Ce livre n'a pas encore de critique ");
+                    tvMessage.setVisibility(View.VISIBLE);
                 }
             }
 
