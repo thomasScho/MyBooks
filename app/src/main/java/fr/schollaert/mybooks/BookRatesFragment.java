@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import fr.schollaert.mybooks.model.Book;
 import fr.schollaert.mybooks.model.User;
 
+import static java.lang.System.in;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,6 +102,13 @@ public class BookRatesFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
+                if (user != null && user.getUserLibrary() != null && user.getUserLibrary().contains(mBook)) {
+                    for (Book b : user.getUserLibrary()) {
+                        if (b.equals(mBook) && b.getYourRate() != null) {
+                            rbYourRate.setRating(b.getYourRate());
+                        }
+                    }
+                }
             }
 
             @Override
@@ -139,13 +148,31 @@ public class BookRatesFragment extends Fragment {
         sendRateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean dejaNote = false;
                 if (user != null && user.getUserLibrary() != null && user.getUserLibrary().contains(mBook)) {
-                    float rate = rbYourRate.getRating();
-                    mBookDB.getRates().add(rate);
-                    booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
-                    Snackbar.make(v, "Note ajoutée, merci", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }else{
+                    for (Book b : user.getUserLibrary()) {
+                        if (b.equals(mBook) && b.getYourRate() != null) {
+                            Snackbar.make(v, "Vous avez déjà noté ce livre", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            dejaNote = true;
+
+                        }
+                    }
+                    if (!dejaNote) {
+                        float rate = rbYourRate.getRating();
+                        mBookDB.getRates().add(rate);
+                        booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
+                        for (Book b : user.getUserLibrary()) {
+                            if (b.equals(mBook)) {
+                                b.setYourRate(rate);
+                                dejaNote = true;
+                                usersRef.child(user.getIdUtilisateur()).setValue(user);
+                                Snackbar.make(v, "Note ajoutée, merci", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+                        }
+                    }
+                } else {
                     Snackbar.make(v, "Il faut avoir lu un livre pour le juger", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
