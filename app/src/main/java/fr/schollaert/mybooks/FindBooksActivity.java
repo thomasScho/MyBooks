@@ -1,8 +1,10 @@
 package fr.schollaert.mybooks;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,6 +41,9 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         int click = v.getId();
         if (click == R.id.envoyerRecherche) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
             String titleToFind = ((EditText) findViewById(R.id.findingText)).getText().toString();
             if (titleToFind.length() > 0) {
                 titleToFind = titleToFind.replace(" ", "+");
