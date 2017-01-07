@@ -28,9 +28,6 @@
             android:name=".FindBooksActivity"
             android:label="@string/title_activity_finding" />
         <activity
-            android:name=".MyCommentsActivity"
-            android:label="@string/title_activity_comments" />
-        <activity
             android:name=".BookActivity"
             android:label="@string/title_activity_book"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -42,7 +39,8 @@
         <activity
             android:name=".MyLibraryActivity"
             android:label="@string/title_activity_my_library"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FindFriendsActivity"></activity>
     </application>
 
 </manifest>

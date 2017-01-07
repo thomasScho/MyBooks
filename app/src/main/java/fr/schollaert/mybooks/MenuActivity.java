@@ -17,6 +17,7 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         setContentView(R.layout.activity_menu);
         findViewById(R.id.meButton).setOnClickListener(this);
         findViewById(R.id.myBooksButton).setOnClickListener(this);
+        findViewById(R.id.myFriendsButton).setOnClickListener(this);
         findViewById(R.id.findBookButton).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
 
@@ -30,6 +31,8 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
             startActivity(new Intent(this, MeActivity.class));
         } else if (i == R.id.myBooksButton) {
             startActivity(new Intent(this, MyLibraryActivity.class));
+        } else if (i == R.id.myFriendsButton) {
+            startActivity(new Intent(this, MyFriendsActivity.class));
         } else if (i == R.id.findBookButton) {
             startActivity(new Intent(this, FindBooksActivity.class));
         } else if(i == R.id.sign_out_button){
