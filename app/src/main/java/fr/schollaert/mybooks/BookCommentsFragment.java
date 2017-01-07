@@ -105,14 +105,11 @@ public class BookCommentsFragment extends Fragment {
                 TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
                 System.out.println("Avant test ");
                 if (mBookDB != null && mBookDB.getComments() != null) {
-                    System.out.println("il y a le livre en db au moins ");
-                    System.out.println(mBookDB);
                     CommentAdapter commentAdapter = new CommentAdapter(getContext(), mBookDB.getComments());
                     lv.setAdapter(commentAdapter);
                     lv.setVisibility(View.VISIBLE);
                     tvMessage.setVisibility(View.GONE);
                 } else {
-                    System.out.println("Pas de com  en db ");
                     lv.setVisibility(View.GONE);
                     tvMessage.setText("Ce livre n'a pas encore de critique ");
                     tvMessage.setVisibility(View.VISIBLE);
