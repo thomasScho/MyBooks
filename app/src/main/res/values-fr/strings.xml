@@ -15,7 +15,7 @@
     <string name="giveEmail"></string>
     <string name="label_emailpassword">Authentification par email et mot de passe</string>
     <string name="loading">Chargement...</string>
-    <string name="signInMessage">Veuillez vous connecter pour accéder à l\'application</string>
+    <string name="signInMessage">Connectez vous afin de profitez pleinement de cette application</string>
     <string name="sign_in">Se connecter</string>
     <string name="sign_out">Se déconnecter</string>
     <string name="signed_out">Déconnecté</string>

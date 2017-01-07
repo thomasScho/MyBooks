@@ -13,12 +13,14 @@
         android:id="@+id/tvTitle"
         android:text="Android Development"
         android:layout_gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textStyle="normal|bold"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="93dp"
-        android:text="Moyenne du livre"
+        android:text="Moyenne du livre :"
         android:id="@+id/tvCommentTitle"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"

@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_out"
-        android:theme="@style/ThemeOverlay.MyDarkButton"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
 
         android:drawableBottom="@android:drawable/ic_lock_power_off"
         android:layout_alignParentBottom="false"
@@ -24,7 +26,9 @@
 
     <Button
         android:id="@+id/myCommentButton"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mesDiscussions"
@@ -38,7 +42,9 @@
 
     <Button
         android:id="@+id/meButton"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/monProfil"
@@ -50,7 +56,6 @@
 
     <Button
         android:id="@+id/findBookButton"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/RechercherLivre"
@@ -60,11 +65,17 @@
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
+        android:layout_marginRight="5dp"
+        android:elevation="0dp"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated" />
 
     <Button
         android:id="@+id/myBooksButton"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"

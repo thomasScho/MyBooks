@@ -168,5 +168,20 @@ public class Book implements Serializable {
     public int hashCode() {
         return googleID.hashCode();
     }
+
+
+    public Book(String title, String author, String imageUrl, String googleID, String subTitle, String isbn10, String isbn13, SimpleDateFormat publishedDate, List<Float> rates, List<Comment> comments, Float yourRate) {
+        this.title = title;
+        this.author = author;
+        this.imageUrl = imageUrl;
+        this.googleID = googleID;
+        this.subTitle = subTitle;
+        this.isbn10 = isbn10;
+        this.isbn13 = isbn13;
+        this.publishedDate = publishedDate;
+        this.rates = rates;
+        this.comments = comments;
+        this.yourRate = yourRate;
+    }
 }
 

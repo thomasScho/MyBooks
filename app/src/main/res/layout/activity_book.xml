@@ -44,18 +44,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_menu_share" />
+        app:srcCompat="@drawable/ic_menu_share" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_menu_view"
+        app:srcCompat="@drawable/ic_remove_red_eye_black_24dp"
         android:id="@+id/fabSee"
         android:clickable="false"
-        android:visibility="invisible"
-      />
+        android:visibility="visible"
+        style="@style/Widget.Design.FloatingActionButton" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -65,7 +65,6 @@
         app:srcCompat="@drawable/ic_visibility_off_black_24dp"
         android:id="@+id/fabCancelSee"
         android:clickable="false"
-        android:visibility="visible"
-      />/>
+        android:visibility="visible" />/>
 
 </android.support.design.widget.CoordinatorLayout>

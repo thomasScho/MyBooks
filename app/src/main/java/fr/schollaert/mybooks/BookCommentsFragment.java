@@ -3,10 +3,14 @@ package fr.schollaert.mybooks;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +56,8 @@ public class BookCommentsFragment extends Fragment {
     DatabaseReference thisUserRef;
     Book mBookDB;
 
+    EditText etComment;
+    Button btnValider;
     View view;
     List<Comment> commentList = new ArrayList<>();
 
@@ -84,26 +92,28 @@ public class BookCommentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.fragment_book_comments, container,false);
+        view = inflater.inflate(R.layout.fragment_book_comments, container, false);
         mAuth = FirebaseAuth.getInstance();
-         thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
-         thisBookRef = booksRef.child(mBook.getGoogleID());
+        thisUserRef = usersRef.child(mAuth.getCurrentUser().getUid());
+        thisBookRef = booksRef.child(mBook.getGoogleID());
 
         thisBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mBookDB = dataSnapshot.getValue(Book.class);
-                if(mBookDB != null && mBookDB.getComments()!=null){
+                ListView lv = (ListView) view.findViewById(R.id.lvBookComments);
+                TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
+                System.out.println("Avant test ");
+                if (mBookDB != null && mBookDB.getComments() != null) {
+                    System.out.println("il y a le livre en db au moins ");
+                    System.out.println(mBookDB);
                     CommentAdapter commentAdapter = new CommentAdapter(getContext(), mBookDB.getComments());
-                    ListView lv = (ListView) view.findViewById(R.id.lvBookComments);
                     lv.setAdapter(commentAdapter);
                     lv.setVisibility(View.VISIBLE);
-                    TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
                     tvMessage.setVisibility(View.GONE);
-                }else{
-                    ListView lv = (ListView) view.findViewById(R.id.lvBookComments);
+                } else {
+                    System.out.println("Pas de com  en db ");
                     lv.setVisibility(View.GONE);
-                    TextView tvMessage = (TextView) view.findViewById(R.id.tvCommentTitle);
                     tvMessage.setText("Ce livre n'a pas encore de critique ");
                     tvMessage.setVisibility(View.VISIBLE);
                 }
@@ -115,10 +125,51 @@ public class BookCommentsFragment extends Fragment {
             }
         });
 
+        thisUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
         tvTitle.setText(mBook.getTitle() + ", " + mBook.getAuthor());
 
+        etComment = (EditText) view.findViewById(R.id.et_yourComment);
+        btnValider = (Button) view.findViewById(R.id.btnValider);
+        btnValider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = etComment.getText().toString();
+                etComment.setText("");
 
+                if (user != null && user.getUserLibrary() != null) {
+                    if (user.getUserLibrary().contains(mBook)) {
+                        if (mBookDB == null) {
+                            mBookDB = new Book(mBook);
+                        }
+                        if (mBookDB.getComments() == null) {
+                            mBookDB.setComments(new ArrayList<Comment>());
+                        }
+                        Comment com = new Comment(user.getIdUtilisateur(), msg);
+                        mBookDB.getComments().add(com);
+                        System.out.println(mBookDB);
+                        booksRef.child(mBook.getGoogleID()).setValue(mBookDB);
+                        Snackbar.make(v, "Commentaire ajouté", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    } else {
+                        Snackbar.make(v, "Il faut avoir lu un livre pour le juger", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    }
+                }
+
+            }
+        });
 
 
         return view;

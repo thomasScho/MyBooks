@@ -1,6 +1,7 @@
 package fr.schollaert.mybooks.model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
@@ -10,7 +11,12 @@ import java.text.SimpleDateFormat;
 public class Comment implements Serializable {
     private String idUtil;
     private String comment;
-    private SimpleDateFormat date;
+    private DateFormat date;
+
+    public Comment(String idUtilisateur, String msg) {
+        this.idUtil = idUtilisateur;
+        this.comment = msg;
+    }
 
     public String getIdUtil() {
         return idUtil;
@@ -20,11 +26,11 @@ public class Comment implements Serializable {
         this.idUtil = idUtil;
     }
 
-    public SimpleDateFormat getDate() {
+    public DateFormat getDate() {
         return date;
     }
 
-    public void setDate(SimpleDateFormat date) {
+    public void setDate(DateFormat date) {
         this.date = date;
     }
 
@@ -54,7 +60,7 @@ public class Comment implements Serializable {
 
         if (!idUtil.equals(comment1.idUtil)) return false;
         if (!comment.equals(comment1.comment)) return false;
-        return date.equals(comment1.date);
+        return true;
 
     }
 
@@ -62,7 +68,17 @@ public class Comment implements Serializable {
     public int hashCode() {
         int result = idUtil.hashCode();
         result = 31 * result + comment.hashCode();
-        result = 31 * result + date.hashCode();
         return result;
     }
+
+    public Comment(String idUtil, String comment, DateFormat date) {
+        this.idUtil = idUtil;
+        this.comment = comment;
+        this.date = date;
+    }
+
+    public Comment() {
+    }
+
+
 }

@@ -4,9 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Comment;
 
 /**
@@ -19,22 +23,31 @@ public class CommentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return commentList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return commentList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View view = parent.inflate(context, R.layout.listitem_comment, null);
+        final Comment com = (Comment) getItem(position);
+
+        TextView tvAuthor = (TextView) view.findViewById(R.id.tvCommentAuthor);
+        tvAuthor.setText(com.getIdUtil());
+
+        TextView tvComment = (TextView) view.findViewById(R.id.tvCommentText);
+        tvComment.setText(com.getComment());
+
+        return view;
     }
 
     public CommentAdapter(Context context, List<Comment> commentList) {
