@@ -9,38 +9,6 @@
 
 
     <Button
-        android:id="@+id/sign_out_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_out"
-        style="@android:style/Widget.Material.Button.Borderless.Colored"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-        android:textColor="?android:attr/colorControlActivated"
-
-        android:drawableBottom="@android:drawable/ic_lock_power_off"
-        android:layout_alignParentBottom="false"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/myCommentButton" />
-
-    <Button
-        android:id="@+id/myCommentButton"
-        style="@android:style/Widget.Material.Button.Borderless.Colored"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-        android:textColor="?android:attr/colorControlActivated"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mesDiscussions"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/myBooksButton"
-        android:drawableBottom="@android:drawable/sym_action_chat" />
-
-    <Button
         android:id="@+id/meButton"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
@@ -51,8 +19,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="19dp"
-        android:layout_below="@+id/findBookButton"
-        android:drawableBottom="@drawable/ic_person_black_24dp" />
+        android:layout_below="@+id/myFriendsButton"
+        android:drawableBottom="@drawable/ic_person_black_24dp"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/findBookButton"
@@ -69,7 +38,8 @@
         android:elevation="0dp"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-        android:textColor="?android:attr/colorControlActivated" />
+        android:textColor="?android:attr/colorControlActivated"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/myBooksButton"
@@ -85,8 +55,40 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="19dp"
+        android:layout_below="@+id/findBookButton"
+        android:drawableBottom="@drawable/boook_24dp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/myFriendsButton"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/myFriends"
+        android:layout_marginTop="19dp"
+        android:drawableBottom="@drawable/ic_people_black_24dp"
+        android:layout_below="@+id/myBooksButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_out"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+        android:textColor="?android:attr/colorControlActivated"
+
+        android:drawableBottom="@android:drawable/ic_lock_power_off"
+        android:layout_marginTop="19dp"
+        android:textSize="18sp"
         android:layout_below="@+id/meButton"
-        android:drawableBottom="@drawable/boook_24dp" />
+        android:layout_alignLeft="@+id/meButton"
+        android:layout_alignStart="@+id/meButton" />
 
 
 </RelativeLayout>

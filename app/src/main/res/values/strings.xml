@@ -90,4 +90,5 @@
     <string name="Envoyer">Envoyer</string>
     <string name="VotreCom">Votre commentaire</string>
     <string name="EmptyRate">Il n\'y a pas encore de note disponible pour ce livre</string>
+    <string name="myFriends">Mes amis</string>
 </resources>

@@ -18,7 +18,6 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         findViewById(R.id.meButton).setOnClickListener(this);
         findViewById(R.id.myBooksButton).setOnClickListener(this);
         findViewById(R.id.findBookButton).setOnClickListener(this);
-        findViewById(R.id.myCommentButton).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -33,8 +32,6 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
             startActivity(new Intent(this, MyLibraryActivity.class));
         } else if (i == R.id.findBookButton) {
             startActivity(new Intent(this, FindBooksActivity.class));
-        }else if (i == R.id.myCommentButton) {
-            startActivity(new Intent(this, MyCommentsActivity.class));
         } else if(i == R.id.sign_out_button){
             mAuth.signOut();
             startActivity(new Intent(this, EmailPasswordActivity.class));

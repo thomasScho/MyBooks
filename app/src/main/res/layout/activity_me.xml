@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_seeFriends"
-            android:drawableBottom="@drawable/ic_person_black_24dp"
+            android:drawableBottom="@drawable/ic_people_black_24dp"
             style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
