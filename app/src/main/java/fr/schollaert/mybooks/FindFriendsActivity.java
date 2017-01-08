@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +16,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import fr.schollaert.mybooks.adapter.UserAdapter;
 import fr.schollaert.mybooks.model.User;
 
 public class FindFriendsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,6 +36,7 @@ public class FindFriendsActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         int click = v.getId();
+        final List<User> userFound = new ArrayList<>();
         if (click == R.id.envoyerRecherche) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
@@ -47,11 +51,15 @@ public class FindFriendsActivity extends AppCompatActivity implements View.OnCli
                             User user = userSnap.getValue(User.class);
                             if (user.getPseudo() != null && user.getPseudo() != "" && user.getPseudo().contains(friendPseudo)) {
                                 System.out.println(user);
+                                userFound.add(user);
                             }
                             else{
                                 System.out.println("Il n'y a pas d'utilisateur portant ce pseudo, désolé");
                             }
                         }
+                        UserAdapter ua = new UserAdapter(FindFriendsActivity.this, userFound);
+                        ListView lv = (ListView) findViewById(R.id.listFriendView);
+                        lv.setAdapter(ua);
                     }
 
                     @Override

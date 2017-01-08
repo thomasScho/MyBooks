@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/ratingBarBook"
         android:layout_gravity="center"
-        style="@style/Widget.AppCompat.RatingBar"
+        style="@android:style/Widget.Material.Light.RatingBar"
         android:numStars="5"
         android:clickable="false"
         android:focusableInTouchMode="false"
