@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Book;
 
 

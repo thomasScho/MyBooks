@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.content.Context;
 import android.net.Uri;
@@ -30,6 +30,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fr.schollaert.mybooks.fragment.BookCommentsFragment;
+import fr.schollaert.mybooks.fragment.BookDescriptionFragment;
+import fr.schollaert.mybooks.fragment.BookRatesFragment;
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Book;
 import fr.schollaert.mybooks.model.User;
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import fr.schollaert.mybooks.EditParamActivity;
+import fr.schollaert.mybooks.activity.EditParamActivity;
 import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Param;
 

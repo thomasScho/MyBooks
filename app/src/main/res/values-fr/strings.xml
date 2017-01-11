@@ -39,4 +39,5 @@
     <string name="EmptyRate">Il n\'y a pas encore de note disponible pour ce livre</string>
     <string name="myFriends">Mes amis</string>
     <string name="pseudoAChercher">Pseudo</string>
+    <string name="action_settings">Paramètres</string>
 </resources>

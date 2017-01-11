@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +43,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.User;
 
 /**

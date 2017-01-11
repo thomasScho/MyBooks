@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    tools:context="fr.schollaert.mybooks.BookDescriptionFragment"
+    tools:context="fr.schollaert.mybooks.fragment.BookDescriptionFragment"
     android:layout_height="wrap_content"
     android:padding="17dp">
 
@@ -17,7 +17,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="93dp"
+        android:layout_height="wrap_content"
         android:text="Moyenne du livre"
         android:id="@+id/tvCommentTitle"
         android:layout_marginLeft="5dp"
@@ -51,7 +51,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="93dp"
+        android:layout_height="79dp"
         android:text="Votre note"
         android:id="@+id/tvYourRateTitle"
         android:layout_marginLeft="5dp"

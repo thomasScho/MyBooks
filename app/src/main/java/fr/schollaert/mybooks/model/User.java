@@ -2,6 +2,7 @@ package fr.schollaert.mybooks.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.schollaert.mybooks.model.Book;
 
@@ -16,6 +17,7 @@ public class User implements Serializable {
     private ArrayList<Book> userLibrary;
     private int age;
     private String sexe;
+    private ArrayList<String> userFriends;
 
     public User() {
 
@@ -83,6 +85,26 @@ public class User implements Serializable {
     }
 
 
+
+    public ArrayList<String> getUserFriends() {
+        return userFriends;
+    }
+
+    public void setUserFriends(ArrayList<String> userFriends) {
+        this.userFriends = userFriends;
+    }
+
+
+    public User(String pseudo, String idUtilisateur, String mail, ArrayList<Book> userLibrary, int age, String sexe, ArrayList<String> userFriends) {
+        this.pseudo = pseudo;
+        this.idUtilisateur = idUtilisateur;
+        this.mail = mail;
+        this.userLibrary = userLibrary;
+        this.age = age;
+        this.sexe = sexe;
+        this.userFriends = userFriends;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -92,7 +114,9 @@ public class User implements Serializable {
                 ", userLibrary=" + userLibrary +
                 ", age=" + age +
                 ", sexe='" + sexe + '\'' +
+                ", userFriends=" + userFriends +
                 '}';
     }
 }
+
 

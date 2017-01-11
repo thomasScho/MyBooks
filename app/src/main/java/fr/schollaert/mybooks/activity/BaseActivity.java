@@ -1,8 +1,10 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.app.ProgressDialog;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
+
+import fr.schollaert.mybooks.R;
 
 public class BaseActivity extends AppCompatActivity {
 

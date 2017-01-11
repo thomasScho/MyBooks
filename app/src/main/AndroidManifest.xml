@@ -11,36 +11,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CheckConnectionActivity">
+        <activity android:name=".activity.CheckConnectionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmailPasswordActivity" />
-        <activity android:name=".GoogleSignInActivity" />
+        <activity android:name=".activity.EmailPasswordActivity" />
+        <activity android:name=".activity.GoogleSignInActivity" />
         <activity
-            android:name=".MeActivity"
+            android:name=".activity.MeActivity"
             android:label="@string/title_activity_me" />
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".activity.MenuActivity" />
         <activity
-            android:name=".FindBooksActivity"
+            android:name=".activity.FindBooksActivity"
             android:label="@string/title_activity_finding" />
         <activity
-            android:name=".BookActivity"
+            android:name=".activity.BookActivity"
             android:label="@string/title_activity_book"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditParamActivity" />
+        <activity android:name=".activity.EditParamActivity" />
         <activity
-            android:name=".MyFriendsActivity"
+            android:name=".activity.MyFriendsActivity"
             android:label="@string/title_activity_my_friends"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MyLibraryActivity"
+            android:name=".activity.MyLibraryActivity"
             android:label="@string/title_activity_my_library"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FindFriendsActivity"></activity>
+        <activity android:name=".activity.FindFriendsActivity"></activity>
     </application>
 
 </manifest>

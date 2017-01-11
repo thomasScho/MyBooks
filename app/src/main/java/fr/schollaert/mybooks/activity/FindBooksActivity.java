@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.adapter.LibraryAdapter;
 import fr.schollaert.mybooks.model.Book;
 

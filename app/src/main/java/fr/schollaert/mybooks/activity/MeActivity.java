@@ -1,4 +1,4 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.adapter.ParamAdapter;
 import fr.schollaert.mybooks.model.Param;
 import fr.schollaert.mybooks.model.User;

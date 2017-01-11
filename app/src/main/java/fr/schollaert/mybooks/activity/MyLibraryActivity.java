@@ -1,9 +1,8 @@
-package fr.schollaert.mybooks;
+package fr.schollaert.mybooks.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.adapter.LibraryAdapter;
 import fr.schollaert.mybooks.model.Book;
 import fr.schollaert.mybooks.model.User;

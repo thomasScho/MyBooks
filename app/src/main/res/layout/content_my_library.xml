@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="fr.schollaert.mybooks.MyLibraryActivity"
+    tools:context="fr.schollaert.mybooks.activity.MyLibraryActivity"
     tools:showIn="@layout/activity_my_library">
 
 

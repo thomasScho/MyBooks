@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import fr.schollaert.mybooks.BookActivity;
+import fr.schollaert.mybooks.activity.BookActivity;
 import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Book;
 
