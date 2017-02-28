@@ -97,7 +97,7 @@ public class CheckConnectionActivityTest {
         onView(withId(R.id.field_email)).check(matches(withError("Required email")));
         onView(withId(R.id.field_password)).check(matches(withError("Required password")));
     }
-    
+
 
     private static Matcher withError(final String expected) {
         return new TypeSafeMatcher() {
