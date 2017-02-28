@@ -74,9 +74,11 @@ public class EditParamActivity extends AppCompatActivity implements View.OnClick
                 user.setPseudo(m_paramSelected.getDescription());
                 break;
             case "Sexe":
+                // TODO: fix probleme sexe non reconnu
                 user.setSexe(m_paramSelected.getDescription());
                 break;
             case "Age":
+                // TODO: fix le probleme age interdit
                 user.setAge(Integer.valueOf(m_paramSelected.getDescription()));
                 break;
             default:
