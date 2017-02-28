@@ -203,7 +203,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
         String email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailField.setError("Required.");
+            mEmailField.setError("Required email");
             valid = false;
         } else {
             mEmailField.setError(null);
@@ -211,7 +211,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
         String password = mPasswordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPasswordField.setError("Required.");
+            mPasswordField.setError("Required password");
             valid = false;
         } else {
             mPasswordField.setError(null);
