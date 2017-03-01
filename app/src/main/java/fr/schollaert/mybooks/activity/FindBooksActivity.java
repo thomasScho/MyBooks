@@ -77,13 +77,7 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
 
                                 String subTitle = volumeInfo.optString("subtitle");
                                 book.setSubTitle(subTitle);
-
-
-                                /**String publishedDate = volumeInfo.optString("publishedDate");
-                                if(publishedDate != null) {
-                                    book.setPublishedDate(new SimpleDateFormat(publishedDate));
-                                }
-*/
+                                
                                 JSONArray authors = volumeInfo.optJSONArray("authors");
                                 if(authors != null && authors.length() > 0){
                                     String author = authors.optString(0);
