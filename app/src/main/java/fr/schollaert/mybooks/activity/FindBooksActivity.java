@@ -77,7 +77,7 @@ public class FindBooksActivity extends AppCompatActivity implements View.OnClick
 
                                 String subTitle = volumeInfo.optString("subtitle");
                                 book.setSubTitle(subTitle);
-                                
+
                                 JSONArray authors = volumeInfo.optJSONArray("authors");
                                 if(authors != null && authors.length() > 0){
                                     String author = authors.optString(0);
