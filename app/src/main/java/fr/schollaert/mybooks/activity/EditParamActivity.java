@@ -1,7 +1,7 @@
 package fr.schollaert.mybooks.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,25 +13,33 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import fr.schollaert.mybooks.R;
 import fr.schollaert.mybooks.model.Param;
 import fr.schollaert.mybooks.model.User;
 
 public class EditParamActivity extends AppCompatActivity implements View.OnClickListener {
+    ArrayList<String> sexe = new ArrayList<>();
+    User user = new User();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference usersRef = database.getReference("Users");
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Param m_paramSelected;
-
-    User user = new User();
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference usersRef = database.getReference("Users");
     private EditText etValue;
+
+    public void fillSexeArray() {
+        sexe.add("Homme");
+        sexe.add("Femme");
+        sexe.add("Indéterminé");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_param);
+        fillSexeArray();
 
         m_paramSelected = (Param) getIntent().getSerializableExtra("item");
 
@@ -74,12 +82,15 @@ public class EditParamActivity extends AppCompatActivity implements View.OnClick
                 user.setPseudo(m_paramSelected.getDescription());
                 break;
             case "Sexe":
-                // TODO: fix probleme sexe non reconnu
-                user.setSexe(m_paramSelected.getDescription());
+                if (sexe.contains(m_paramSelected.getDescription())) {
+                    user.setSexe(m_paramSelected.getDescription());
+                }
                 break;
             case "Age":
-                // TODO: fix le probleme age interdit
-                user.setAge(Integer.valueOf(m_paramSelected.getDescription()));
+                int ageSelected = Integer.valueOf(m_paramSelected.getDescription());
+                if (ageSelected > 0 && ageSelected < 105) {
+                    user.setAge(ageSelected);
+                }
                 break;
             default:
                 break;
